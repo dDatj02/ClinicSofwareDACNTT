@@ -31,20 +31,20 @@ public class ClinicSoftwareApplication {
 		return new BCryptPasswordEncoder();
 	}
 	
-	@Bean
-	CommandLineRunner run(UserService userService)
-	{
-		return args -> {
-			userService.saveRole(new Role(null, "ROLE_USER"));
-			userService.saveRole(new Role(null, "ROLE_MANAGER"));
-			userService.saveRole(new Role(null, "ROLE_ADMIN"));
+	// @Bean
+	// CommandLineRunner run(UserService userService)
+	// {
+	// 	return args -> {
+	// 		userService.saveRole(new Role(null, "ROLE_USER"));
+	// 		userService.saveRole(new Role(null, "ROLE_MANAGER"));
+	// 		userService.saveRole(new Role(null, "ROLE_ADMIN"));
 
-			userService.saveUser(new User(null, "Lam Dat", "Lamdat", "lamgiadat2231@gmail.com", "123456", new HashSet<>()));
-			userService.saveUser(new User(null, "Nguyen Gia", "nguyengia", "nguyengia@gmail.com", "123456", new HashSet<>()));
+	// 		userService.saveUser(new User(null, "Lam Dat", "Lamdat", "lamgiadat2231@gmail.com", "123456", new HashSet<>()));
+	// 		userService.saveUser(new User(null, "Nguyen Gia", "nguyengia", "nguyengia@gmail.com", "123456", new HashSet<>()));
 
-			userService.addRoleToUser("lamgiadat2231@gmail.com", "ROLE_USER");
-			userService.addRoleToUser("nguyengia@gmail.com", "ROLE_MANAGER");
-		};
-	}
+	// 		userService.addRoleToUser("lamgiadat2231@gmail.com", "ROLE_USER");
+	// 		userService.addRoleToUser("nguyengia@gmail.com", "ROLE_MANAGER");
+	// 	};
+	// }
 
 }
