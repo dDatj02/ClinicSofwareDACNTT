@@ -33,17 +33,34 @@ public class User implements UserDetails
     private String user_name;
     private String email;
     private String password;
+    private String specialist;
+    private String moreInfo;
+    
+    
     @ManyToMany
     @JoinTable(name = "users_role", joinColumns = @JoinColumn(name = "Users_Id"), inverseJoinColumns = @JoinColumn(name = "Roles_ID"))
     private Set<Role> roles = new HashSet<>();
 
-    public User(Long id, String full_name, String user_name, String email, String password, Set<Role> roles)
+    public User(Long id, String full_name, String user_name, String email, String password, Set<Role> roles) //For normal user
     {
         this.id = id;
         this.full_name = full_name;
         this.user_name = user_name;
         this.email = email;
         this.password = password;
+        this.roles = roles;
+    }
+
+
+    public User(Long id, String full_name, String user_name, String email, String password, String specialist, String moreInfo, Set<Role> roles) //For doctor user
+    {
+        this.id = id;
+        this.full_name = full_name;
+        this.user_name = user_name;
+        this.email = email;
+        this.password = password;
+        this.specialist = specialist;
+        this.moreInfo = moreInfo;
         this.roles = roles;
     }
 
@@ -63,6 +80,21 @@ public class User implements UserDetails
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public String getFullName() 
+    {
+        return full_name;
+    }
+
+    public String getSpecialist() 
+    {
+        return specialist;
+    }
+
+    public String getMoreInfo() 
+    {
+        return moreInfo;
     }
 
     @Override

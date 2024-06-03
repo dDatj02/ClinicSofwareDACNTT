@@ -1,5 +1,7 @@
 package com.example.ClinicSoftware.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,5 +49,18 @@ public class UserServiceImpl implements UserService
         Role role = roleRepository.findByName(rolename);
         user.getRoles().add(role);
     }
+
+    @Override
+    public List<User> getUsersDoctor() 
+    {
+        return userRepository.findByRoleName("ROLE_MANAGER");
+    }
+
+    @Override
+    public User getUser(String id) 
+    {
+        return userRepository.findById(Long.parseLong(id)).orElseThrow(() -> new RuntimeException("User not found"));
+    }
+    
     
 }

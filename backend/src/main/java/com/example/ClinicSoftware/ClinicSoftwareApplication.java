@@ -41,9 +41,11 @@ public class ClinicSoftwareApplication {
 
 	// 		userService.saveUser(new User(null, "Lam Dat", "Lamdat", "lamgiadat2231@gmail.com", "123456", new HashSet<>()));
 	// 		userService.saveUser(new User(null, "Nguyen Gia", "nguyengia", "nguyengia@gmail.com", "123456", new HashSet<>()));
+	// 		userService.saveUser(new User(null, "Bac si Linh", "DoctorLinh", "doctorLinh@gmail.com", "123456", "Ho hap", "More info for specialist", new HashSet<>()));
 
 	// 		userService.addRoleToUser("lamgiadat2231@gmail.com", "ROLE_USER");
-	// 		userService.addRoleToUser("nguyengia@gmail.com", "ROLE_MANAGER");
+	// 		userService.addRoleToUser("nguyengia@gmail.com", "ROLE_USER");
+	// 		userService.addRoleToUser("doctorLinh@gmail.com", "ROLE_MANAGER");
 	// 	};
 	// }
 
