@@ -41,18 +41,23 @@ public class User implements UserDetails
     @JoinTable(name = "users_role", joinColumns = @JoinColumn(name = "Users_Id"), inverseJoinColumns = @JoinColumn(name = "Roles_ID"))
     private Set<Role> roles = new HashSet<>();
 
-    public User(Long id, String full_name, String user_name, String email, String password, Set<Role> roles) //For normal user
+    @OneToMany(mappedBy = "user")
+    private Set<Booking> userBookings = new HashSet<>();
+
+    @OneToMany(mappedBy = "doctor")
+    private Set<Booking> doctorBookings = new HashSet<>();
+
+    public User(Long id, String full_name, String user_name, String email, String password) //For normal user
     {
         this.id = id;
         this.full_name = full_name;
         this.user_name = user_name;
         this.email = email;
         this.password = password;
-        this.roles = roles;
     }
 
 
-    public User(Long id, String full_name, String user_name, String email, String password, String specialist, String moreInfo, Set<Role> roles) //For doctor user
+    public User(Long id, String full_name, String user_name, String email, String password, String specialist, String moreInfo) //For doctor user
     {
         this.id = id;
         this.full_name = full_name;
@@ -61,7 +66,6 @@ public class User implements UserDetails
         this.password = password;
         this.specialist = specialist;
         this.moreInfo = moreInfo;
-        this.roles = roles;
     }
 
 

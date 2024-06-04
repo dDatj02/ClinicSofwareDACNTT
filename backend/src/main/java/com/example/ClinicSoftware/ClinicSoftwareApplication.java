@@ -1,7 +1,5 @@
 package com.example.ClinicSoftware;
 
-import java.util.HashSet;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.ClinicSoftware.Entity.Role;
-import com.example.ClinicSoftware.Entity.User;
 import com.example.ClinicSoftware.Service.UserService;
 
 @SpringBootApplication
@@ -30,23 +27,16 @@ public class ClinicSoftwareApplication {
 	{
 		return new BCryptPasswordEncoder();
 	}
+
 	
-	// @Bean
-	// CommandLineRunner run(UserService userService)
-	// {
-	// 	return args -> {
-	// 		userService.saveRole(new Role(null, "ROLE_USER"));
-	// 		userService.saveRole(new Role(null, "ROLE_MANAGER"));
-	// 		userService.saveRole(new Role(null, "ROLE_ADMIN"));
-
-	// 		userService.saveUser(new User(null, "Lam Dat", "Lamdat", "lamgiadat2231@gmail.com", "123456", new HashSet<>()));
-	// 		userService.saveUser(new User(null, "Nguyen Gia", "nguyengia", "nguyengia@gmail.com", "123456", new HashSet<>()));
-	// 		userService.saveUser(new User(null, "Bac si Linh", "DoctorLinh", "doctorLinh@gmail.com", "123456", "Ho hap", "More info for specialist", new HashSet<>()));
-
-	// 		userService.addRoleToUser("lamgiadat2231@gmail.com", "ROLE_USER");
-	// 		userService.addRoleToUser("nguyengia@gmail.com", "ROLE_USER");
-	// 		userService.addRoleToUser("doctorLinh@gmail.com", "ROLE_MANAGER");
-	// 	};
-	// }
+	@Bean
+	CommandLineRunner run(UserService userService)
+	{
+		return args -> {
+			userService.saveRole(new Role(null, "ROLE_USER"));
+			userService.saveRole(new Role(null, "ROLE_MANAGER"));
+			userService.saveRole(new Role(null, "ROLE_ADMIN"));
+		};
+	}
 
 }

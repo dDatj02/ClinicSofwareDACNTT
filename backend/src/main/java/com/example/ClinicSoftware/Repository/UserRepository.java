@@ -14,9 +14,14 @@ import com.example.ClinicSoftware.Entity.User;
 public interface UserRepository extends JpaRepository<User, Long>
 {
     Optional<User> findByEmail(String email);
+    Optional<User> findById(Long id);
     
 
     //Get list user by role name
     @Query("SELECT u FROM User u JOIN u.roles r WHERE r.name = :roleName")
     List<User> findByRoleName(@Param("roleName") String roleName);
+
+    //Get role name by user id
+    @Query("SELECT r.name FROM User u JOIN u.roles r WHERE u.id = :userId")
+    String findRoleNameByUserId(@Param("userId") Long userId);
 }

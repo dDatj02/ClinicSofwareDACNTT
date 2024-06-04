@@ -33,6 +33,11 @@ public class UserServiceImpl implements UserService
     public User saveUser(User user) 
     {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        //Check if user already exists
+        if(userRepository.findByEmail(user.getEmail()).isPresent())
+        {
+            return null;
+        }
         return userRepository.save(user);
     }
 
@@ -47,7 +52,7 @@ public class UserServiceImpl implements UserService
     {
         User user = userRepository.findByEmail(username).get();
         Role role = roleRepository.findByName(rolename);
-        user.getRoles().add(role);
+        user.getRoles().add(role);  
     }
 
     @Override
