@@ -28,7 +28,7 @@ public class ClinicSoftwareApplication {
 		return new BCryptPasswordEncoder();
 	}
 
-	
+	//Chay lan dau de tao ra cac role trong database roi comment lai
 	@Bean
 	CommandLineRunner run(UserService userService)
 	{
